@@ -1,25 +1,15 @@
 import 'package:bloc_learning/cubit/counter_cubit.dart';
+import 'package:bloc_learning/home/secon_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final counterCubit = CounterCubit();
-
-  @override
-  void dispose() {
-    counterCubit.close(); // important
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final counterCubit = BlocProvider.of<CounterCubit>(context);
+    print("Buil");
     return Scaffold(
       appBar: AppBar(title: const Text('Counter bloc')),
       body: Center(
@@ -34,13 +24,13 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: counterCubit.increment,
-            child: const Icon(Icons.plus_one),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: counterCubit.decrement,
-            child: const Icon(Icons.minimize),
+            heroTag: 'Sec',
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => SeconPage()));
+            },
+            child: const Icon(Icons.navigate_next),
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:bloc_learning/todo_app/bloc/todo_bloc.dart';
 import 'package:bloc_learning/todo_app/cubit/todo_cubit.dart';
 import 'package:bloc_learning/todo_app/pages/todo_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,10 @@ class MyApp extends StatelessWidget {
     return Builder(
       builder: (context) {
         return MultiBlocProvider(
-          providers: [BlocProvider(create: (context) => TodoCubit())],
+          providers: [
+            BlocProvider(create: (context) => TodoCubit()),
+            BlocProvider(create: (context) => TodoBloc()),
+          ],
           child: MaterialApp(home: TodoPage()),
         );
       },

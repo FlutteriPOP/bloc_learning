@@ -1,4 +1,4 @@
-import 'package:bloc_learning/todo_app/cubit/todo_cubit.dart';
+import 'package:bloc_learning/todo_app/bloc/todo_bloc.dart';
 import 'package:bloc_learning/todo_app/model/todo_model.dart';
 import 'package:bloc_learning/todo_app/pages/add_todo.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class TodoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Todo App')),
-      body: BlocBuilder<TodoCubit, List<Todo>>(
+      body: BlocBuilder<TodoBloc, List<Todo>>(
         builder: (context, todos) {
           return Center(
             child: ListView.builder(

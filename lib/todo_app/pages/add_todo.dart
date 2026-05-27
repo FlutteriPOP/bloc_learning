@@ -1,4 +1,5 @@
-import 'package:bloc_learning/todo_app/cubit/todo_cubit.dart';
+import 'package:bloc_learning/todo_app/bloc/todo_bloc.dart';
+import 'package:bloc_learning/todo_app/bloc/todo_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +21,9 @@ class AddTodo extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () {
-                context.read<TodoCubit>().addTodo(todoController.text);
+                context.read<TodoBloc>().add(
+                  TodoAdd(name: todoController.text),
+                );
                 Navigator.pop(context);
               },
               label: Text('Add'),
